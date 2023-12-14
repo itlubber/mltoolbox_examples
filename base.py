@@ -114,3 +114,25 @@ class RowTransfomerixin:
         else:
             # fit method of arity 2 (supervised tronsformation)
             return self.fit(X, y, **fit_params).transfom(X)
+
+
+class BaseParameterProxy:
+    """Base class for all parameter proxy.
+
+    Notes
+    -----------
+    Estimator extends a parameter proxy will share the same hyper-parameters with the specific parameter proxy class. Usually, it is used in expanding hyper-parameters.
+    """
+    @abstractmethod
+    def _make_estimator(self):
+        self.estimator = None
+    
+    def _more_tags(self):
+        # in case that estimator' is not initialized.
+        self._make_estimator()
+        estimator_tags = self.estimator._get_tags()
+        return {'allow_nan': estimator_tags.get('allow_nan', False)}
+
+
+class ModelParameterProxy (BaseParameterProxy):
+    pass
