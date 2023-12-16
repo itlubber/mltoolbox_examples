@@ -2,7 +2,7 @@ import numbers
 import warnings
 import numpy as np
 from scipy import special
-from sklearn.utils import _deprecate_positional_args
+from sklearn.utils.validation import _deprecate_positional_args
 from ._base import BaseDiscretizer
 from ._base import _MIN_BIN_WIDTH
 

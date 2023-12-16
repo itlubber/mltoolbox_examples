@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.utils import _deprecate_positional_args, check_array
+from sklearn.utils.validation import _deprecate_positional_args, check_array
 from ._base import BaseDiscretizer
 
 

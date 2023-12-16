@@ -2,8 +2,8 @@ import inspect
 import numbers
 import numpy as np
 import optuna
-from sklearn.utils import _deprecate_positional_args
 from sklearn.utils._tags import _safe_tags
+from sklearn.utils.validation import _deprecate_positional_args
 from ._base import BaseDiscretizer
 from ...base import MetaEstimatorMixin
 from ...feature_selection._iv_selector import _col_iv

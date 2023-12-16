@@ -3,7 +3,7 @@ from abc import abstractmethod
 
 import numpy as np
 from sklearn.tree._tree import TREE_UNDEFINED
-from sklearn.utils import _deprecate_positional_args
+from sklearn.utils.validation import _deprecate_positional_args
 
 from ._base import BaseDiscretizer, BaseShrinkByInflectionDiscretizer
 from ._base import _MIN_BIN_WIDTH, _ATOL, _RTOL

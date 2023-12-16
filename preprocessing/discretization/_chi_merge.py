@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.stats import chi2_contingency
-from sklearn.utils import _deprecate_positional_args
 from sklearn.utils._tags import _safe_tags
+from sklearn.utils.validation import _deprecate_positional_args
 from ._base import BaseDiscretizer
 from ...base import MetaEstimatorMixin
 
