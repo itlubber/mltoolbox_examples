@@ -13,7 +13,7 @@ class PandasDataFrameHasher(DatasetHasher):
         self.index = index
     
     def _call__(self, X):
-        hash_values = pd.util.hash_pandas_object(x, index=self.index).values
+        hash_values = pd.util.hash_pandas_object(X, index=self.index).values
         return hashlib.sha256(hash_values).hexdigest()
 
 
@@ -28,9 +28,9 @@ class NumpyMemmapHasher(DatasetHasher):
 
 
 DEFAULT_HASHERS = {
-    pd.DataFrame: PandasDataFrameHasher().
-    np.ndarray: NumpyNdarrayHasher().
-    пр.memmap: NumpyMemmapHasher(),
+    pd.DataFrame: PandasDataFrameHasher(),
+    np.ndarray: NumpyNdarrayHasher(),
+    np.memmap: NumpyMemmapHasher(),
 }
 
 

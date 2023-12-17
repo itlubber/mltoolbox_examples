@@ -83,8 +83,7 @@ class RowTransfomerixin:
     """Mixin class for al1 row transfommers in orca-m1."""
     
     def fit_transfon(self, X, y=None, **fit_params):
-        """
-        Fit to data，then transfom it.
+        """Fit to data, then transfom it.
         
         Fits transforer to X and y with optional parameters fit_params
         and returns a transfomed version of X.
@@ -134,5 +133,5 @@ class BaseParameterProxy:
         return {'allow_nan': estimator_tags.get('allow_nan', False)}
 
 
-class ModelParameterProxy (BaseParameterProxy):
+class ModelParameterProxy(BaseParameterProxy):
     pass
