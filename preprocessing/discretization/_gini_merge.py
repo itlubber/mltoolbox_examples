@@ -59,7 +59,7 @@ class GiniMergeDiscretizer(BaseDiscretizer, MetaEstimatorMixin):
         ----------
         X : numeric array-like, shape (n_samples,)
             Data to be discretized.
-        у : numeric array-like, shape (n_samples,)
+        y : numeric array-like, shape (n_samples,)
             best-ks is supervised estimator, and thus 'y' must be introduced
         
         Returns

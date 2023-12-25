@@ -44,7 +44,7 @@ class MDLPDiscretizer(BaseDiscretizer):
     """
     @_deprecate_positional_args
     def __init__(self, *, n_bins=5, n_jobs=None, min_samples_split=2, min_samples_leaf=2, max_candidates=32):
-        super (MDLPDiscretizer, self).__init__(n_bins=n_bins, n_jobs=n_jobs)
+        super(MDLPDiscretizer, self).__init__(n_bins=n_bins, n_jobs=n_jobs)
         self.min_samples_split = min_samples_split
         self.min_samples_leaf = min_samples_leaf
         self.max_candidates = max_candidates
