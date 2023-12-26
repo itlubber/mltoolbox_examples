@@ -12,7 +12,7 @@ from sklearn.utils.metaestimators import if_delegate_has_method
 from sklearn.utils.validation import check_is_fitted, _deprecate_positional_args, check_array
 
 from .._base import SelectorMixin
-from ...base import BaseEstimator
+from ...base import BaseEstimator, if_delegate_has_method
 
 
 class SelectFromModel(SK_SelectFromModel):

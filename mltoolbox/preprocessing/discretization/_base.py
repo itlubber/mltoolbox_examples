@@ -116,7 +116,7 @@ class BaseDiscretizer(TransformerMixin, BaseEstimator):
     _closed = "left"
 
     @_deprecate_positional_args
-    def _init_(self, *, n_bins=5, n_jobs=None):
+    def __init__(self, *, n_bins=5, n_jobs=None):
         self.n_bins = n_bins
         self.n_jobs = n_jobs
     
@@ -281,7 +281,7 @@ class BaseDiscretizer(TransformerMixin, BaseEstimator):
             raise ValueError("Incorrect number of features. Expecting {}, received {}.".format(n_features, x.shape[1]))
         
         n_bins = self.n_bins
-        bin_edges = self.bin_edges
+        bin_edges = self.bin_edges_
         right = self.closed == 'right'
         # for jj in range(n_features):
         #     # Values which are close to a bin edge are susceptible to numeric
@@ -399,7 +399,7 @@ class BaseMergeByMinSamplesBinDiscretizer(BaseDiscretizer):
         _, n_features = X.shape
         result = Parallel(n_jobs=self.n_jobs)(delayed(self._bin_one_column)(i, X[:, i], n_bin, y, min_samples_bin=min_samples_bin) for i, n_bin in zip(range(n_features), n_bins))
         bin_edges_, n_bins_= zip(*result)
-        self.bin_edges_= np.asarray(bin_edges_, dtype=object)
+        self.bin_edges_ = np.asarray(bin_edges_, dtype=object)
         self.n_bins_ = np.asarray(n_bins_, dtype=int)
         return self
 

@@ -51,11 +51,11 @@ class BestKSDiscretizer(BaseDiscretizer, MetaEstimatorMixin):
     >>> from mltoolbox.datasets import load_uci_credit
     >>> from mltoolbox.preprocessing import BestKSDiscretizer, UniformDiscretizer
     >>> X, y = load_uci_credit(return_X_y=True, as_frame=True)
-    >>> ks discretizer = BestKSDiscretizer(UniformDiscretizer(n_bins=20), n_bins=5).fit(x, y)
+    >>> ks_discretizer = BestKSDiscretizer(UniformDiscretizer(n_bins=20), n_bins=5).fit(x, y)
     >>> ks_discretizer.transform(X)
     """
     @_deprecate_positional_args
-    def _init_(self, estimator, *, n_bins=5, n_jobs=None):
+    def __init__(self, estimator, *, n_bins=5, n_jobs=None):
         self.estimator = estimator
         super(BestKSDiscretizer, self).__init__(n_bins=n_bins, n_jobs=n_jobs)
 

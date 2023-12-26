@@ -11,6 +11,11 @@ from sklearn.base import OutlierMixin
 from sklearn.base import ClusterMixin, BiclusterMixin
 from sklearn.base import is_classifier, is_regressor, is_outlier_detector
 from sklearn.utils.validation import check_is_fitted
+from sklearn.utils.metaestimators import available_if
+
+
+def if_delegate_has_method(delegate):
+    return available_if(lambda self: hasattr(self.base_estimator, delegate))
 
 
 _DEFAULT_TAGS = {
