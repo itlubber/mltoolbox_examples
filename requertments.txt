@@ -2,3 +2,4 @@ scikit-learn
 minepy
 numexpr
 py4j
+optuna
