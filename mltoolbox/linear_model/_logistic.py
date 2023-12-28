@@ -385,7 +385,7 @@ class BinaryLogisticRegression(BaseEstimator, ClassifierMixin):
     >>> ada.fit(X, y)
     BinaryLogisticRegression(epochs=30, random_state=1)
     """
-    def _init_(self, eta=0.01, epochs=50, l2_lambda=0.0, n_batches=1, random_state=None, verbose=0):
+    def __init__(self, eta=0.01, epochs=50, l2_lambda=0.0, n_batches=1, random_state=None, verbose=0):
         self.eta = eta
         self.epochs = epochs
         self.l2_lambda = l2_lambda

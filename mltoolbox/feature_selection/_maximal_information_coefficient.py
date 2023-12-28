@@ -29,7 +29,7 @@ def _make_mine_and_get_mic(alpha, c, est, x, y):
 
 
 class MicSelector(BaseEstimator, SelectorMixin):
-    def _init_(self, *, threshold="mean", alpha=0.6, c=15, est="mic_approx", n_jobs=None):
+    def __init__(self, *, threshold="mean", alpha=0.6, c=15, est="mic_approx", n_jobs=None):
         self.threshold = threshold
         self.alpha = alpha
         self.c = c

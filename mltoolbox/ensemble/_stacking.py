@@ -3,7 +3,7 @@ from ..base import ModelParameterProxy
 
 
 class StackingClassifierParameterProxy(ModelParameterProxy):
-    def _init_(self, estimators, final_estimator=None, cv=None, stack_method='auto', n_jobs=None, passthrough=False, verbose=0):
+    def __init__(self, estimators, final_estimator=None, cv=None, stack_method='auto', n_jobs=None, passthrough=False, verbose=0):
         self.estimators = estimators
         self.final_estimator = final_estimator
         self.cv = cv

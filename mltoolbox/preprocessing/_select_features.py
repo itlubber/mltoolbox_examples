@@ -30,7 +30,7 @@ class SelectFeatures(BaseEstimator, FrameTransformerMixin):
         columns = X.columns.tolist()
         self.features_idx_ = [columns.index(f) for f in self.features]
     
-    def transform(self, x):
+    def transform(self, X):
         check_is_fitted(self, "features_idx_")
         self._check_n_features(X, reset=False)
         X = self._ensure_dataframe(X)

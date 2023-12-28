@@ -82,7 +82,7 @@ class BaseRecursiveSorter(BaseSorter):
 
 class RecursiveSorter(BaseRecursiveSorter, MetaEstimatorMixin):
     @_deprecate_positional_args
-    def _init_(self, estimator, *, n_features_to_select=None, step=1, verbose=0):
+    def __init__(self, estimator, *, n_features_to_select=None, step=1, verbose=0):
         BaseRecursiveSorter.__init__(self, n_features_to_select=n_features_to_select, step=step, verbose=verbose)
         self.estimator = estimator
 

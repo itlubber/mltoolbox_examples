@@ -280,7 +280,7 @@ class BaseDiscretizer(TransformerMixin, BaseEstimator):
         if X.shape[1] != n_features:
             raise ValueError("Incorrect number of features. Expecting {}, received {}.".format(n_features, x.shape[1]))
         
-        n_bins = self.n_bins
+        n_bins = self.n_bins_
         bin_edges = self.bin_edges_
         right = self.closed == 'right'
         # for jj in range(n_features):
@@ -348,8 +348,8 @@ class BaseDiscretizer(TransformerMixin, BaseEstimator):
 
 
 class BaseMergeByMinSamplesBinDiscretizer(BaseDiscretizer):
-    def _init_(self, *, n_bins=5, n_jobs=None, min_samples_bin=0.05):
-        super(BaseMergeByMinSamplesBinDiscretizer, self)._init_(n_bins=n_bins, n_jobs=n_jobs)
+    def __init__(self, *, n_bins=5, n_jobs=None, min_samples_bin=0.05):
+        super(BaseMergeByMinSamplesBinDiscretizer, self).__init__(n_bins=n_bins, n_jobs=n_jobs)
         self.min_samples_bin = min_samples_bin
 
     def _validate_min_samples_bin(self, X):
@@ -374,7 +374,7 @@ class BaseMergeByMinSamplesBinDiscretizer(BaseDiscretizer):
     def _bin_one_column(self, i, n_bin, x, y=None, min_samples_bin=None):
         pass
     
-    def fit(self, x, y=None, **fit_params):
+    def fit(self, X, y=None, **fit_params):
         """Fit the estimator.
 
         Parameters
@@ -405,8 +405,8 @@ class BaseMergeByMinSamplesBinDiscretizer(BaseDiscretizer):
 
 
 class BaseShrinkByInflectionDiscretizer(BaseDiscretizer):
-    def __init_(self, *, n_bins=5, n_jobs=None, n_inflections=1):
-        super(BaseShrinkByInflectionDiscretizer, self)._init_(n_bins=n_bins, n_jobs=n_jobs)
+    def __init__(self, *, n_bins=5, n_jobs=None, n_inflections=1):
+        super(BaseShrinkByInflectionDiscretizer, self).__init__(n_bins=n_bins, n_jobs=n_jobs)
         self.n_inflections = n_inflections
 
     def _validate_n_inflections(self, X):

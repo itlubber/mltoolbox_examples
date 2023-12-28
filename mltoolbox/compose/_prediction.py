@@ -18,7 +18,7 @@ class TransformedPredictionClassifier(BaseEstimator, ClassifierMixin):
     classification results. This transformation can be given as a Transformer
     such as the StandScoreTransformer
     """
-    def _init__(self, classifier=None, *, transformer=None, func=None, inverse_func=None, check_inverse=True):
+    def __init__(self, classifier=None, *, transformer=None, func=None, inverse_func=None, check_inverse=True):
         self.classifier = classifier
         self.transformer = transformer
         self.func = func
@@ -278,7 +278,7 @@ class ScoreCard(TransformedPredictionClassifier):
     ScoreCard class providing basic fit, transform, predict, output usage.
     """
     def __init__(self, classifier=None, *, transformer=None, func=None, inverse_func=None, check_inverse=False):
-        super(ScoreCard, self)._init_(classifier=classifier, transformer=transformer, func=func, inverse_func=inverse_func, check_inverse=check_inverse)
+        super(ScoreCard, self).__init__(classifier=classifier, transformer=transformer, func=func, inverse_func=inverse_func, check_inverse=check_inverse)
     
     def predict(self, X):
         check_is_fitted(self, ["classifier_", "transformer_"])

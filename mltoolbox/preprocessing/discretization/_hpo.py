@@ -58,8 +58,8 @@ class _OptunaTrialBinEdges:
 
 class OptunaDiscretizer(BaseDiscretizer, MetaEstimatorMixin):
     @_deprecate_positional_args
-    def init_(self, estimator, *, n_bins=5, n_jobs=None, objective=_col_iv, direction="maximize", n_trials=100, trial_timeout=None, verbose=0):
-        super(OptunaDiscretizer, self)._init__(n_bins=n_bins, n_jobs=n_jobs)
+    def __init__(self, estimator, *, n_bins=5, n_jobs=None, objective=_col_iv, direction="maximize", n_trials=100, trial_timeout=None, verbose=0):
+        super(OptunaDiscretizer, self).__init__(n_bins=n_bins, n_jobs=n_jobs)
         self.estimator = estimator
         self.objective = objective
         self.direction = direction

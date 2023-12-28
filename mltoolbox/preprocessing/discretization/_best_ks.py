@@ -51,7 +51,7 @@ class BestKSDiscretizer(BaseDiscretizer, MetaEstimatorMixin):
     >>> from mltoolbox.datasets import load_uci_credit
     >>> from mltoolbox.preprocessing import BestKSDiscretizer, UniformDiscretizer
     >>> X, y = load_uci_credit(return_X_y=True, as_frame=True)
-    >>> ks_discretizer = BestKSDiscretizer(UniformDiscretizer(n_bins=20), n_bins=5).fit(x, y)
+    >>> ks_discretizer = BestKSDiscretizer(UniformDiscretizer(n_bins=20), n_bins=5).fit(X, y)
     >>> ks_discretizer.transform(X)
     """
     @_deprecate_positional_args
@@ -79,7 +79,7 @@ class BestKSDiscretizer(BaseDiscretizer, MetaEstimatorMixin):
         """
         self._validate_params()
         self.estimator.fit(X, y=y, **fit_params)
-        return super (BestKSDiscretizer, self).fit(X, y=y)
+        return super(BestKSDiscretizer, self).fit(X, y=y)
     
     @property
     def closed(self):

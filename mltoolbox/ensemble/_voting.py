@@ -3,7 +3,7 @@ from ..base import ModelParameterProxy
 
 
 class VotingClassifierParameterProxy(ModelParameterProxy):
-    def _init_(self, estimators, voting='hard', weights=None, n_jobs=None, flatten_transform=True):
+    def __init__(self, estimators, voting='hard', weights=None, n_jobs=None, flatten_transform=True):
         self.estimators = estimators
         self.voting = voting
         self.weights = weights
@@ -17,7 +17,7 @@ class VotingClassifierParameterProxy(ModelParameterProxy):
 
 
 class VotingRegressorParameterProxy(ModelParameterProxy):
-    def _init_(self, estimators, weights=None, n_jobs=None):
+    def __init__(self, estimators, weights=None, n_jobs=None):
         self.estimators = estimators
         self.weights = weights
         self.n_jobs = n_jobs

@@ -7,7 +7,7 @@ from ..base import ModelParameterProxy
 
 
 class IsolationForestParameterProxy(ModelParameterProxy):
-    def _init__(self, n_estimators=100,
+    def __init__(self, n_estimators=100,
                 max_samples="auto",
                 contamination="auto",
                 max_features=1.,

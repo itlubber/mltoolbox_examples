@@ -6,7 +6,7 @@ from ..base import BaseEstimator, FrameTransformerMixin
 
 
 class StatisticsSelect(BaseEstimator, FrameTransformerMixin):
-    def _init_(self, threshold=0.8, *, total_iv=None, percentiles=None, match_list=None):
+    def __init__(self, threshold=0.8, *, total_iv=None, percentiles=None, match_list=None):
         self.threshold = threshold
         self.total_iv = total_iv
         self.percentiles = percentiles

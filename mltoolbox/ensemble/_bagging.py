@@ -4,7 +4,7 @@ from ..base import ModelParameterProxy
 
 
 class BaggingClassifierParameterProxy(ModelParameterProxy):
-    def _init_(self, base_estimator=None,
+    def __init__(self, base_estimator=None,
                 n_estimators=10, *,
                 max_samples=1.0,
                 max_features=1.0,
@@ -42,7 +42,7 @@ class BaggingClassifierParameterProxy(ModelParameterProxy):
 
 
 class BaggingRegressorParameterProxy(ModelParameterProxy):
-    def _init_(self, base_estimator=None,
+    def __init__(self, base_estimator=None,
                 n_estimators=10, *,
                 max_samples=1.0,
                 max_features=1.0,

@@ -11,7 +11,7 @@ class WoeDirectionFilter(BaseEstimator, SelectorMixin):
     def __init__(self, *, directions=None, regularization=1.0):
         self.directions = directions
         self.regularization = regularization
-            
+
     def _validate_directions(self, X):
         _, n_features = X.shape
         directions = self.directions

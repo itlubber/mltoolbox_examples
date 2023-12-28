@@ -35,7 +35,7 @@ class ChiMergeDiscretizer(BaseDiscretizer, MetaEstimatorMixin):
     
     @_deprecate_positional_args
     def __init__(self, estimator, *, n_bins=5, n_jobs=None, threshold=0.001):
-        super(ChiMergeDiscretizer, self)._init_(n_bins=n_bins, n_jobs=n_jobs)
+        super(ChiMergeDiscretizer, self).__init__(n_bins=n_bins, n_jobs=n_jobs)
         self.estimator = estimator
         self.threshold = threshold
 

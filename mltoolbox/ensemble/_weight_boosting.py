@@ -640,7 +640,7 @@ def _samme_proba(estimator, n_classes, X):
 
 
 class AdaBoostClassifierParameterProxy(ModelParameterProxy):
-    def _init_(self, base_estimator=None, n_estimators=50, learning_rate=1., algorithm="SAMME.R", random_state=None):
+    def __init__(self, base_estimator=None, n_estimators=50, learning_rate=1., algorithm="SAMME.R", random_state=None):
         self.base_estimator = base_estimator
         self.n_estimators = n_estimators
         self.learning_rate = learning_rate

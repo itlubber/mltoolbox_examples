@@ -35,7 +35,7 @@ class SelectFromLGBMClassifier(LGBMClassifierParameterProxy, BaseSelectFromModel
 
 class SelectFromLGBMRegressor(LGBMRegressorParameterProxy, BaseSelectFromModel):
     @_deprecate_positional_args
-    def _init_(self, *, threshold=None, norm_order=1, top_k=None, importance_getter='auto',
+    def __init__(self, *, threshold=None, norm_order=1, top_k=None, importance_getter='auto',
                 boosting_type='gbdt', num_leaves=31, max_depth=-1,
                 subsample_for_bin=200000, objective=None, class_weight="balanced",
                 min_split_gain=0., min_child_weight=1e-3, min_child_samples=20,
