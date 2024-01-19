@@ -8,7 +8,7 @@ from sklearn.feature_selection import SelectFromModel as SK_SelectFromModel
 from sklearn.feature_selection._from_model import _calculate_threshold, _get_feature_importances
 from sklearn.utils import safe_mask
 from sklearn.utils._tags import _safe_tags
-from sklearn.utils.metaestimators import if_delegate_has_method
+# from sklearn.utils.metaestimators import if_delegate_has_method
 from sklearn.utils.validation import check_is_fitted, _deprecate_positional_args, check_array
 
 from .._base import SelectorMixin

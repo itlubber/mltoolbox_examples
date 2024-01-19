@@ -292,9 +292,9 @@ class RuleSupportSelector(ThresholdRuleFilter):
         super(RuleSupportSelector, self).__init__(score_func=support_score, threshold=threshold)
 
 
-class RuleliftSelector(ThresholdRuleFilter):
+class RuleLiftSelector(ThresholdRuleFilter):
     def __init__(self, *, threshold=3.0):
-        super(RuleliftSelector, self).__init__(score_func=lift_score, threshold=threshold)
+        super(RuleLiftSelector, self).__init__(score_func=lift_score, threshold=threshold)
 
 
 class RuleCorrSelector(BaseEstimator, RuleSelectorMixin):

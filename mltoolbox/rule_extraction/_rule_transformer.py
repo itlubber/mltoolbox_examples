@@ -69,7 +69,7 @@ class RuleTransformer(RuleTransformerMixin, _BaseComposition):
     _required_parameters = ['transformers']
 
     @_deprecate_positional_args
-    def __init_(self, transformers, *, remainder='drop', sparse_threshold=0.3, n_jobs=None, transformer_weights=None, verbose=False):
+    def __init__(self, transformers, *, remainder='drop', sparse_threshold=0.3, n_jobs=None, transformer_weights=None, verbose=False):
         self.transformers = transformers
         self.remainder = remainder
         self.sparse_threshold = sparse_threshold

@@ -2,7 +2,7 @@ import warnings
 import numpy as np
 from sklearn.utils import check_consistent_length, column_or_1d, assert_all_finite
 from sklearn.utils.multiclass import type_of_target
-from sklearn.metrics._scorer import SCORERS, check_scoring, make_scorer, get_scorer, _check_multimetric_scoring
+from sklearn.metrics._scorer import check_scoring, make_scorer, get_scorer, _check_multimetric_scoring
 
 
 def support_score(y_true, y_pred, *, pos_label=None, sample_weight=None):
