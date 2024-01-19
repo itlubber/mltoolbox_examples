@@ -27,7 +27,7 @@ def _apply_expr_on_array(expr, X, feature_names):
     return ne.evaluate(expr, local_dict=ctx)
 
 
-class RuleState(str. Enum):
+class RuleState(str, Enum):
     INITIALIZED = "initialized"
     APPLIED = "applied"
 
@@ -97,7 +97,7 @@ class Rule:
     def __repr__(self):
         return f"Rule({repr(self.expr)})"
     
-    def predict(self, X, part): # dict预测对应part_dict 、字符串表达式对应"“、其他情况报错
+    def predict(self, X, part=""): # dict预测对应part_dict 、字符串表达式对应"、"其他情况报错
         """Apply rule on the specific data.
 
         Parameters

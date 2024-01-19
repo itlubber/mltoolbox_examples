@@ -61,7 +61,7 @@ class Rule:
     array([True, True, False, False])
     >>> (r0 | r1).predict(x)
     array([True, True, True, True])
-    >>> (r0 & r1).predict()
+    >>> (r0 & r1).predict(x)
     array([False, False, False, False])
     """
     def __init__(self, expr):
@@ -74,7 +74,7 @@ class Rule:
     def __repr__(self):
         return f"Rule({repr(self.expr)})"
     
-    def predict(self, x):
+    def predict(self, X):
         """Apply rule on the specific data.
 
         Parameters
@@ -89,7 +89,7 @@ class Rule:
         """
         if self._state == RuleState.INITIALIZED:
             if isinstance(X, DataFrame):
-                feature_names = x.columns.values
+                feature_names = X.columns.values
             else:
                 feature_names = np.fromiter(("f{}" % i for i in range(X. shape[1])), dtype=object)
             X = check_array(X, dtype="numeric")
