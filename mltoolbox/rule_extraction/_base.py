@@ -1,5 +1,6 @@
 from sklearn.utils.validation import check_is_fitted, _deprecate_positional_args
 from ._rule import Rule
+# from ._memory_effident_rule import Rule
 from ..base import BaseEstimator, FrameTransformerMixin
 
 
@@ -17,14 +18,14 @@ def _flatten(ruless):
     Examples
     -----------
     >>> ruless = [[Rule("f1 <= 1"), Rule("f1 > 2")], [Rule("f2 > 3.5"), Rule("f2 <= 0.5")]]
-    >>> [_for_in _flatten(ruless)]
+    >>> [_ for _ in _flatten(ruless)]
     [Rule("f1 <= 1"), Rule("f1 > 2"), Rule("f2 > 3.5"), Rule("f2 <= 0.5")]
     """
     for rules in ruless:
         if isinstance(rules, list):
             yield from _flatten(rules)
-    else:
-        yield rules
+        else:
+            yield rules
 
 
 class BaseRuleExtractor(BaseEstimator, FrameTransformerMixin):
@@ -34,7 +35,7 @@ class BaseRuleExtractor(BaseEstimator, FrameTransformerMixin):
     def __init__(self, *, n_bins=5):
         self.n_bins = n_bins
 
-    def check_y(self, y):
+    def _check_y(self, y):
         from sklearn.preprocessing import LabelEncoder
         le = LabelEncoder()
         y = le.fit_transform(y)

@@ -11,11 +11,15 @@ from sklearn.base import OutlierMixin
 from sklearn.base import ClusterMixin, BiclusterMixin
 from sklearn.base import is_classifier, is_regressor, is_outlier_detector
 from sklearn.utils.validation import check_is_fitted
-from sklearn.utils.metaestimators import available_if
 
 
 def if_delegate_has_method(delegate):
-    return available_if(lambda self: hasattr(self.base_estimator, delegate))
+    try:
+        from sklearn.utils.metaestimators import available_if
+        return available_if(lambda self: hasattr(self.base_estimator, delegate))
+    except:
+        from sklearn.utils.metaestimators import if_delegate_has_method
+        return if_delegate_has_method(delegate)
 
 
 _DEFAULT_TAGS = {
@@ -73,7 +77,7 @@ class FrameTransformerMixin(TransformerMixin):
     
     def _ensure_dataframe(self, X):
         if not isinstance(X, DataFrame):
-            raise TypeError("Expect a pandas DataFrame, got " "{} instead".format(type(x)))
+            raise TypeError("Expect a pandas DataFrame, got " "{} instead".format(type(X)))
         return X
 
 

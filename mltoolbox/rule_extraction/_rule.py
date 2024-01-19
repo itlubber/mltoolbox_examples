@@ -118,10 +118,10 @@ class Rule:
             if isinstance(self.expr, dict): # dict部分
                 if part not in part_dict:
                     raise TypeError("Part : {} not in ['if','then','else']".format(part))
-                if not self.expr[part]: #没有返回值的情况[]
+                if not self.expr[part]: # 没有返回值的情况[]
                     return list()
                 dict2expr = json2expr(self.expr[part], X.shape[1], feature_names)
-                if not isinstance(dict2expr, str): #返回Value (类型已经做过转换),对其扩充-->fvalue7*Len(X)l
+                if not isinstance(dict2expr, str): # 返回Value (类型已经做过转换),对其扩充-->[value]*Len(X)
                     result = [dict2expr] * len(X)
                 else: # 表达式在进行计算
                     result = _apply_expr_on_array(dict2expr, X, feature_names)
@@ -135,6 +135,7 @@ class Rule:
             else:
                 raise TypeError("Rule currently only supports dict and expression")
             self.result_ = result
+            self._state = RuleState.APPLIED
         else:
             result = self.result_
         return result

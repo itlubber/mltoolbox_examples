@@ -155,7 +155,7 @@ class BaseRuleFilter(BaseEstimator, RuleSelectorMixin):
         return y
 
     def fit(self, R, y=None, **fit_params):
-        R= check_rules(R)
+        R = check_rules(R)
         y = self._check_y(y)
         if not callable(self.score_func):
             raise TypeError("The score function should be a callable, %s (%s) was passed." % (self.score_func, type(self.score_func)))
@@ -241,10 +241,13 @@ class SelectRuleKBest(BaseRuleFilter):
     def __init__(self, score_func=lift_score, *, k=10):
         super(SelectRuleKBest, self). __init__(score_func=score_func)
         self.k = k
-        
+
     def _check_params(self, R, y):
+        if self.k != "all" and self.k >= len(R):
+            self.k = len(R)
+
         if not (self.k == "all" or 0 <= self.k <= len(R)):
-            raise ValueError(f"k should be >=0, <- n_rules - {len(R)}; got {repr(self.k)}. Use k = 'all' to return all rules.")
+            raise ValueError(f"k should be >=0, <= n_rules - {len(R)}; got {repr(self.k)}. Use k = 'all' to return all rules.")
     
     def _get_support_mask(self):
         check_is_fitted(self, 'scores_')

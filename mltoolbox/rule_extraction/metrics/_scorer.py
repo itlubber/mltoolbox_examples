@@ -50,7 +50,7 @@ def support_score(y_true, y_pred, *, pos_label=None, sample_weight=None):
 
     # make y_true a boolean vector
     y_true = (y_true == pos_label)
-    y_pred - (y_pred == pos_label)
+    y_pred = (y_pred == pos_label)
 
     all_prod = np.column_stack((y_true, y_pred))
     support = np.count_nonzero(np.all(all_prod == 1, axis=1))

@@ -173,8 +173,8 @@ class BaseSelectFromModel(BaseEstimator, SelectorMixin):
         if self.top_k is not None:
             mask = np.zeros_like(scores, dtype=bool)
             candidate_indices = np.argsort(-scores, kind='mergesort')[:self.top_k]
-        else:
             mask[candidate_indices] = True
+        else:
             mask = np.ones_like(scores, dtype=bool)
         mask[scores < threshold] = False
         return mask
