@@ -9,7 +9,7 @@ from sklearn.utils.validation import check_is_fitted
 
 
 class BaseScoreTransformer(BaseEstimator, TransformerMixin):
-    def __init_(self, down_lmt=300, up_lmt=1000, greater_is_better=True, cutoff=None):
+    def __init__(self, down_lmt=300, up_lmt=1000, greater_is_better=True, cutoff=None):
         self.down_lmt = down_lmt
         self.up_lmt = up_lmt
         self.greater_is_better = greater_is_better
@@ -23,11 +23,11 @@ class BaseScoreTransformer(BaseEstimator, TransformerMixin):
 class StandardScoreTransformer(BaseScoreTransformer):
     """Stretch the predicted probability to a normal distributed score."""
     def __init__(self, score0=660, pdo=75, bad_rate=0.15, down_lmt=300, up_lmt=1000, greater_is_better=True, cutoff=None):
+        super().__init__(down_lmt=down_lmt, up_lmt=up_lmt, greater_is_better=greater_is_better, cutoff=cutoff)
         self.score0 = score0
         self.pdo = pdo
         self.bad_rate = bad_rate
-        super(StandardScoreTransformer, self).__init__(down_lmt=down_lmt, up_lmt=up_lmt, greater_is_better=greater_is_better, cutoff=cutoff)
-    
+
     def fit(self, X, y=None, **fit_params):
         self._validate_data(X, reset=True, accept_sparse=False, dtype="numeric", copy=False, force_all_finite=True)
 
@@ -57,12 +57,12 @@ class StandardScoreTransformer(BaseScoreTransformer):
         Xt = self._validate_data(X, reset=False, accept_sparse=False, dtype="numeric", copy=True, force_all_finite=True)
         # if not np.all((0 <= Xt) & (Xt <= 1)):
         #     raise ValueError ("Input should be probabilities between 0 and 1.")
-        A, B = self.A_, self.B
+        A, B = self.A_, self.B_
         down_lmt, up_lmt = self.down_lmt, self.up_lmt
         points =A - B * np.log(Xt / (1.0 - Xt))
         points = np.clip(points, down_lmt, up_lmt)
         return points
-    
+
     def transform(self, X):
         data = self._transform(X)
         if isinstance(X, DataFrame):
