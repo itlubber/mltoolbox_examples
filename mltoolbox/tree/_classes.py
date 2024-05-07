@@ -35,7 +35,7 @@ class BaseDecisionTreeParameterProxy(ModelParameterProxy):
             random_state=self.random_state,
             max_leaf_nodes=self.max_leaf_nodes,
             min_impurity_decrease=self.min_impurity_decrease,
-            min_impurity_split=self.min_impurity_split,
+            # min_impurity_split=self.min_impurity_split,
             class_weight=self.class_weight,
             ccp_alpha=self.ccp_alpha,
         )
