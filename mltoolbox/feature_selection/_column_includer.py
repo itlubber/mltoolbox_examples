@@ -6,7 +6,7 @@ from ..base import BaseEstimator
 
 
 # borrowed from mlxtend
-class ColumnIncluder (BaseEstimator, SelectorMixin):
+class ColumnIncluder(BaseEstimator, SelectorMixin):
     """Selector for including specific columns from a data.
 
     Parameters

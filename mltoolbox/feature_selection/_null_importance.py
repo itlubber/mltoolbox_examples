@@ -89,7 +89,7 @@ class BaseNullImportanceSelection(BaseEstimator, SelectorMixin):
 class NullImportanceSelection(BaseNullImportanceSelection, MetaEstimatorMixin):
     @_deprecate_positional_args
     def __init__(self, estimator, *, threshold='mean', norm_order=1, top_k=None, cv=3, n_runs=5):
-        BaseNullImportanceSelection._init_(self, threshold=threshold, norm_order=norm_order, top_k=top_k, cv=cv, n_runs=n_runs)
+        BaseNullImportanceSelection.__init__(self, threshold=threshold, norm_order=norm_order, top_k=top_k, cv=cv, n_runs=n_runs)
         self.estimator = estimator
     
     def _make_estimator(self):
