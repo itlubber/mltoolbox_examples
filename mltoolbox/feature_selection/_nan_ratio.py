@@ -40,10 +40,10 @@ class NanFilter(BaseEstimator, SelectorMixin):
     ----------
     >>> import pandas as pd
     >>> from mltoolbox.feature_selection._nan_ratio import NanFilter
-    >>> X = pd.DataFrame([[0, np.nan, 0, 3],[0, None,4, 3], [0, 1, np.nan, 3]], columns=["f1", "f2", "f3", "f4"])
+    >>> x = pd.DataFrame([[0, np.nan, 0, 3],[0, None,4, 3], [0, 1, np.nan, 3]], columns=["f1", "f2", "f3", "f4"])
     >>> selector = NanFilter(threshold="median").fit(x)
     NanFilter(missing_values=nan, sparse='auto', threshold='median')
-    >>> Xt = selector.transform(X)
+    >>> xt = selector.transform(x)
     """
     @_deprecate_positional_args
     def __init__(self, *, threshold=0.95, missing_values=np.nan, sparse="auto"):

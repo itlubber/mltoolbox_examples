@@ -37,11 +37,11 @@ class InformationValueSelector(BaseEstimator, SelectorMixin):
     ----------
     >>> from mltoolbox.datasets import load_uci_credit
     >>> from mltoolbox.feature_selection import InformationValueSelector
-    >>> X, y = load_uci_credit(return_X_y=True, as_frame=True)
-    >>> X
+    >>> x, y = load_uci_credit(return_X_y=True, as_frame=True)
+    >>> x
         [30000 rows x 23 columns]
     >>> selector = InformationValueSelector().fit(x, y)
-    >>> selector.transform(X)
+    >>> selector.transform(x)
         [30000 rows x 21 columns]
     >>> selector.get_selected_features(x)
     array(['LIMIT_BAL', 'EDUCATION', 'AGE', 'PAY_?', 'PAY_2', 'PAY_3',
@@ -59,6 +59,7 @@ class InformationValueSelector(BaseEstimator, SelectorMixin):
     def fit(self, X, y=None, **fit_params):
         self.n_features_in_ = X.shape[1]
         self.scores_ = _iv(X, y, regularization=self.regularization, n_jobs=self.n_jobs)
+        self.feature_names_in_ = self.get_selected_features(X)
         return self
     
     def _get_support_mask(self):
@@ -138,7 +139,7 @@ def _iv(X, y, regularization=1.0, n_jobs=None):
     """
     X = check_array(X, dtype=None, force_all_finite=True, ensure_2d=True)
     le = LabelEncoder()
-    у = le.fit_transform(y)
+    y = le.fit_transform(y)
     if len(le.classes_) != 2:
         raise ValueError("Only support binary label for computing information value!")
     _, n_features = X.shape

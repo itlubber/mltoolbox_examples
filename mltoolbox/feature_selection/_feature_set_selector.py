@@ -17,7 +17,7 @@ class FeatureSetSelector (BaseEstimator, SelectorMixin):
     >>> FeatureSetSelector (subset="f1").fit_transform(X)
     >>> FeatureSetSelector(subset=[0]).fit_transform(X)
     >>> FeatureSetSelector(subset=0).fit_transform(X)
-    >>> FeatureSetSelector(subset-0).fit transform(X.values)
+    >>> FeatureSetSelector(subset=0).fit transform(X.values)
     array([[1],
            [2]], dtype=int64)
     """

@@ -273,11 +273,11 @@ class BaseDiscretizer(TransformerMixin, BaseEstimator):
         check_is_fitted(self)
 
         # force copy to avoid modifying original data
-        X = check_array(x, copy=True, dtype=FLOAT_DTYPES)
+        x = check_array(x, copy=True, dtype=FLOAT_DTYPES)
 
         # X = check_array(X, copy=False, dtype=FLOAT_DTYPES, force_all_finite=False)
         n_features = self.n_bins_.shape[0]
-        if X.shape[1] != n_features:
+        if x.shape[1] != n_features:
             raise ValueError("Incorrect number of features. Expecting {}, received {}.".format(n_features, x.shape[1]))
         
         n_bins = self.n_bins_
@@ -291,9 +291,9 @@ class BaseDiscretizer(TransformerMixin, BaseEstimator):
         # eps = _ATOL + _RTOL * np.abs(Xt[:, jj])
         # Xt[:, jj] = np.digitize(Xt[:, jj] + eps, bin_edges[jj][1:], right=right)
         # np.clip(Xt, e, self.n_bins_ - 1, out=Xt)
-        xt_list = Parallel(n_jobs=self.n_jobs)(delayed(_digitize_one_column)(i, X[:, i], bin_edges[i], n_bins[i], right) for i in range(n_features))
-        Xt = np.hstack(xt_list)
-        return Xt
+        xt_list = Parallel(n_jobs=self.n_jobs)(delayed(_digitize_one_column)(i, x[:, i], bin_edges[i], n_bins[i], right) for i in range(n_features))
+        xt = np.hstack(xt_list)
+        return xt
         
     def transform(self, X):
         data = self._transform(X)
@@ -336,13 +336,13 @@ class BaseDiscretizer(TransformerMixin, BaseEstimator):
         if isinstance(Xt, DataFrame):
             columns = Xt.columns
             index = Xt.index
-            return DataFrame (data=data, columns=columns, index=index)
+            return DataFrame(data=data, columns=columns, index=index)
         return data
         
     def _more_tags(self):
         return {
             "X_types": ["2darray"],
-            "allow_nan": False,
+            "allow_nan": True,
             "requires_y": False,
         }
 

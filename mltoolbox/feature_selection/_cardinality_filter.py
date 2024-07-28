@@ -13,7 +13,7 @@ class CardinalityFilter(BaseEstimator, SelectorMixin):
     >>> x = pd.DataFrame({"f2": ["F", "м", "F"], "f3": ["M1", "M2", "м3"]})
     >>> from mltoolbox.feature_selection import CardinalityFilter
     >>> cs = CardinalityFilter(threshold=2)
-    >>> cs.fit transform(X)
+    >>> cs.fit_transform(X)
     """
     @_deprecate_positional_args
     def __init__(self, *, threshold=10, dropna=True):

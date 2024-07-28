@@ -153,7 +153,7 @@ class FrameSelectorMixin(FrameTransformerMixin, metaclass=ABCMeta):
         """
         mask = self._get_support_mask()
         if not mask.any():
-            warn( "No features were selected: either the data is too noisy or the selection test too strict.", UserWarning)
+            warn("No features were selected: either the data is too noisy or the selection test too strict.", UserWarning)
         if len(mask) != X.shape[1]:
             raise ValueError("X has a different shape than during fitting.")
         return safe_mask(X, mask)
